@@ -1,1 +1,243 @@
-/* empty - global styles in styles.scss */
+@font-face {
+  font-family: 'KellySignature';
+  src: url('/fonts/KellySignature-Wymo4.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ===== SPLASH ===== */
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #060606;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 1s ease, visibility 1s ease;
+  &.fade-out { opacity: 0; visibility: hidden; }
+}
+
+/* Animated vertical lines in background */
+.bg-lines {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  span {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    top: -100%;
+    background: linear-gradient(to bottom, transparent, rgba(138,170,229,0.08), transparent);
+    animation: line-fall linear infinite;
+  }
+}
+@keyframes line-fall {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* Orbiting rings */
+.orbit {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(138,170,229,0.06);
+}
+.orbit-1 {
+  width: 500px; height: 500px;
+  animation: spin 12s linear infinite;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    width: 6px; height: 6px;
+    background: var(--primary);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 15px var(--primary);
+  }
+}
+.orbit-2 {
+  width: 350px; height: 350px;
+  animation: spin 8s linear infinite reverse;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    width: 4px; height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+  }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.orbit-3 {
+  width: 650px; height: 650px;
+  animation: spin 18s linear infinite;
+  border-style: dashed;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%; right: 0;
+    width: 5px; height: 5px;
+    background: var(--primary);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 12px var(--primary), 0 0 30px rgba(138,170,229,0.3);
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0;
+    width: 3px; height: 3px;
+    background: #fff;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 8px rgba(255,255,255,0.5);
+  }
+}
+.orbit-4 {
+  width: 200px; height: 200px;
+  animation: spin 5s linear infinite reverse;
+  border-color: rgba(138,170,229,0.1);
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    width: 4px; height: 4px;
+    background: #8AAAE5;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 12px #8AAAE5;
+  }
+}
+.orbit-5 {
+  width: 450px; height: 450px;
+  animation: spin 14s linear infinite;
+  border-color: rgba(255,255,255,0.03);
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 20%;
+    width: 3px; height: 3px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255,255,255,0.4);
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 20%; left: 0;
+    width: 5px; height: 5px;
+    background: var(--primary);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--primary);
+  }
+}
+
+/* Corner accents */
+.corner {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  z-index: 1;
+}
+.corner-tl {
+  top: 40px; left: 40px;
+  border-top: 2px solid rgba(138,170,229,0.15);
+  border-left: 2px solid rgba(138,170,229,0.15);
+  animation: corner-in 0.8s ease forwards 0.2s;
+  opacity: 0;
+}
+.corner-br {
+  bottom: 40px; right: 40px;
+  border-bottom: 2px solid rgba(138,170,229,0.15);
+  border-right: 2px solid rgba(138,170,229,0.15);
+  animation: corner-in 0.8s ease forwards 0.4s;
+  opacity: 0;
+}
+@keyframes corner-in {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Signature */
+.signature-wrap {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.signature {
+  font-family: 'KellySignature', cursive;
+  font-size: 4.5rem;
+  margin: 0;
+  line-height: 1.3;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.letter {
+  display: inline-block;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(20px) rotateX(90deg);
+  animation: type-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  text-shadow: 0 0 20px rgba(138,170,229,0.4);
+}
+.letter.space { width: 0.4em; }
+
+@keyframes type-in {
+  0% { opacity: 0; transform: translateY(20px) rotateX(90deg); }
+  100% { opacity: 1; transform: translateY(0) rotateX(0deg); }
+}
+
+/* Underline */
+.sig-line {
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  margin: 8px auto 0;
+  animation: line-grow 0.8s ease forwards 1.8s;
+  box-shadow: 0 0 15px rgba(138,170,229,0.3);
+}
+@keyframes line-grow { to { width: 350px; } }
+
+/* Tagline — letter by letter */
+.sig-tagline {
+  margin-top: 1.5rem;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+.tag-letter {
+  display: inline-block;
+  color: rgba(255,255,255,0.4);
+  opacity: 0;
+  animation: tag-in 0.2s ease forwards;
+}
+.tag-letter.space { width: 0.3em; }
+@keyframes tag-in {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .signature { font-size: 3rem; }
+  .orbit-1 { width: 300px; height: 300px; }
+  .orbit-2 { width: 200px; height: 200px; }
+  @keyframes line-grow { to { width: 200px; } }
+}

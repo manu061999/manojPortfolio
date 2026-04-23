@@ -1,3 +1,36 @@
+<!-- Signature Splash Screen -->
+<div class="splash" *ngIf="showSplash" [class.fade-out]="splashFading">
+  <!-- Animated background lines -->
+  <div class="bg-lines">
+    <span *ngFor="let l of bgLines" [style.left]="l.left" [style.animation-duration]="l.dur" [style.animation-delay]="l.delay"></span>
+  </div>
+
+  <!-- Orbiting rings -->
+  <div class="orbit orbit-1"></div>
+  <div class="orbit orbit-2"></div>
+  <div class="orbit orbit-3"></div>
+  <div class="orbit orbit-4"></div>
+  <div class="orbit orbit-5"></div>
+
+  <div class="signature-wrap">
+    <h1 class="signature">
+      <span class="letter" *ngFor="let char of signatureLetters; let i = index"
+            [style.animation-delay]="(i * 80) + 'ms'"
+            [class.space]="char === ' '">{{ char }}</span>
+    </h1>
+    <div class="sig-line"></div>
+    <p class="sig-tagline">
+      <span class="tag-letter" *ngFor="let c of taglineLetters; let i = index"
+            [style.animation-delay]="(2000 + i * 30) + 'ms'"
+            [class.space]="c === ' '">{{ c }}</span>
+    </p>
+  </div>
+
+  <!-- Corner accents -->
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-br"></div>
+</div>
+
 <app-header></app-header>
 <main>
   <app-hero></app-hero>
