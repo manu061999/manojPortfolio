@@ -1,0 +1,24 @@
+<header id="header" class="header d-flex align-items-center fixed-top" [class.scrolled]="isScrolled">
+  <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+    <a href="#hero" class="logo d-flex align-items-center me-auto me-xl-0" (click)="closeMobileNav()">
+      <h1 class="sitename">Manoj</h1>
+    </a>
+
+    <nav class="navmenu" [class.mobile-nav-active]="mobileNavOpen">
+      <ul [class.show]="mobileNavOpen">
+        <li *ngFor="let link of navLinks">
+          <a [href]="link.href" (click)="closeMobileNav()">{{ link.label }}</a>
+        </li>
+      </ul>
+      <i class="bi d-xl-none" [ngClass]="mobileNavOpen ? 'bi-x' : 'bi-list'"
+         (click)="toggleMobileNav()" role="button" aria-label="Toggle navigation"></i>
+    </nav>
+
+    <div class="header-social-links d-none d-xl-flex">
+      <a *ngFor="let s of socialLinks" [href]="s.url" target="_blank" [attr.aria-label]="s.label"
+         [style.--brand-color]="s.color">
+        <i class="bi" [ngClass]="s.icon"></i>
+      </a>
+    </div>
+  </div>
+</header>

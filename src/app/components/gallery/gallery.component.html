@@ -1,0 +1,60 @@
+<section id="gallery" class="gallery" data-aos="fade-up">
+  <div class="container">
+    <div class="section-heading">
+      <span class="bg-text">Lifestyle</span>
+      <h2 class="fg-text">Life & Vibes</h2>
+    </div>
+
+    <p class="gallery-intro" data-aos="fade-up" data-aos-delay="100">
+      Beyond the code — here's a glimpse of my world 📸
+    </p>
+
+    <!-- Loading -->
+    <div *ngIf="loading" class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div *ngIf="error" class="text-center py-4">
+      <p class="text-muted">Couldn't load posts. Check back later!</p>
+    </div>
+
+    <!-- Gallery grid -->
+    <div class="gallery-grid" *ngIf="!loading && !error">
+      <div class="gallery-card"
+           *ngFor="let post of posts; let i = index"
+           data-aos="zoom-in" [attr.data-aos-delay]="100 + i * 80">
+        <div class="card-img-wrap">
+          <!-- Video -->
+          <ng-container *ngIf="post.mediaType === 'VIDEO'; else imageBlock">
+            <video [src]="post.videoUrl" [poster]="post.mediaUrl"
+                   muted loop playsinline
+                   (mouseenter)="playVideo($event)"
+                   (mouseleave)="pauseVideo($event)">
+            </video>
+            <div class="video-badge"><i class="bi bi-play-fill"></i></div>
+          </ng-container>
+          <!-- Image -->
+          <ng-template #imageBlock>
+            <img [src]="post.mediaUrl" [alt]="post.caption || 'Instagram post'">
+          </ng-template>
+          <div class="card-overlay">
+            <span class="caption">{{ post.caption | slice:0:60 }}{{ post.caption.length > 60 ? '...' : '' }}</span>
+            <a [href]="post.permalink" target="_blank" class="insta-link">
+              <i class="bi bi-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Follow CTA -->
+    <div class="follow-cta" data-aos="fade-up" data-aos-delay="200">
+      <a href="https://www.instagram.com/itsmanoj.vibes/" target="_blank" class="follow-btn">
+        <i class="bi bi-instagram"></i> Follow me on Instagram
+      </a>
+    </div>
+  </div>
+</section>

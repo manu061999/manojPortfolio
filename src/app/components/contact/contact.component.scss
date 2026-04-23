@@ -1,0 +1,95 @@
+.contact {
+  background: var(--bg-white);
+  padding: 60px 0;
+}
+
+.form-box, .info-box {
+  background: var(--surface);
+  padding: 2rem;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.06), 0 2px 5px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  height: 100%;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  position: relative;
+  margin-bottom: 1.5rem;
+  &::after {
+    content: '';
+    position: absolute;
+    height: 3px;
+    background: var(--primary);
+    width: 80px;
+    bottom: -8px;
+    left: 0;
+  }
+}
+
+.form-control {
+  background: transparent;
+  border: 1px solid #999;
+  border-radius: 0;
+  font-size: 14px;
+  padding: 10px 12px;
+  &:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.2rem rgba(138,170,229,0.25);
+  }
+}
+
+textarea.form-control { min-height: 120px; }
+
+.btn-send {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  &:hover { background: var(--primary-dark); color: #fff; box-shadow: 0 6px 20px rgba(0,36,107,0.3); transform: translateY(-2px); }
+  &:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; background: #aaa; }
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    i {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-right: 12px;
+      margin-top: 2px;
+    }
+  }
+}
+
+.social-links {
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    margin-right: 10px;
+    font-size: 1.1rem;
+    transition: 0.3s;
+    &:hover {
+      background: var(--brand-color);
+      border-color: var(--brand-color);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      i { color: #fff; }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+<section id="contact" class="contact" data-aos="fade-up">
+  <div class="container">
+    <div class="section-heading">
+      <span class="bg-text">Connect</span>
+      <h2 class="fg-text">Contact</h2>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-7" data-aos="fade-right" data-aos-delay="100">
+        <div class="form-box">
+          <h5 class="form-title">Say Hello!</h5>
+
+          <div *ngIf="formStatus === 'sent'" class="alert alert-success">
+            Your message has been sent. Thank you!
+          </div>
+          <div *ngIf="formStatus === 'error'" class="alert alert-danger">
+            There was an error. Please try again.
+          </div>
+
+          <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Name"
+                     [(ngModel)]="formData.name" name="name" #nameField="ngModel"
+                     required minlength="2">
+              <small class="text-danger" *ngIf="nameField.touched && nameField.invalid">
+                Name is required (min 2 characters).
+              </small>
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control" placeholder="Email"
+                     [(ngModel)]="formData.email" name="email" #emailField="ngModel"
+                     required [pattern]="emailPattern">
+              <small class="text-danger" *ngIf="emailField.touched && emailField.invalid">
+                Please enter a valid email address.
+              </small>
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Subject"
+                     [(ngModel)]="formData.subject" name="subject" #subjectField="ngModel"
+                     required minlength="4">
+              <small class="text-danger" *ngIf="subjectField.touched && subjectField.invalid">
+                Subject is required (min 4 characters).
+              </small>
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" rows="5" placeholder="Message"
+                        [(ngModel)]="formData.message" name="message" #messageField="ngModel"
+                        required minlength="10"></textarea>
+              <small class="text-danger" *ngIf="messageField.touched && messageField.invalid">
+                Message is required (min 10 characters).
+              </small>
+            </div>
+            <button type="submit" class="btn btn-send"
+                    [disabled]="formStatus === 'sending' || !contactForm.valid">
+              {{ formStatus === 'sending' ? 'Sending...' : 'Send Message' }}
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-md-5" data-aos="fade-left" data-aos-delay="200">
+        <div class="info-box">
+          <h5 class="form-title">Get in Touch</h5>
+          <ul class="info-list">
+            <li>
+              <i class="bi bi-geo-alt"></i>
+              <span>Hyderabad, Telangana, India</span>
+            </li>
+            <li>
+              <i class="bi bi-telephone"></i>
+              <span>+91 9182616433</span>
+            </li>
+            <li>
+              <i class="bi bi-envelope"></i>
+              <span>diddimanojkumar&#64;gmail.com</span>
+            </li>
+          </ul>
+          <div class="social-links mt-4">
+            <a href="https://www.instagram.com/itsmanoj.vibes/" target="_blank" aria-label="Instagram" style="--brand-color: #E4405F;">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://github.com/manu061999" target="_blank" aria-label="GitHub" style="--brand-color: #181717;">
+              <i class="bi bi-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/diddimanojkumar/" target="_blank" aria-label="LinkedIn" style="--brand-color: #0A66C2;">
+              <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="https://www.snapchat.com/add/muff.inhead" target="_blank" aria-label="Snapchat" style="--brand-color: #FFFC00;">
+              <i class="bi bi-snapchat"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

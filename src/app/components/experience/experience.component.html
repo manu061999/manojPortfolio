@@ -1,0 +1,89 @@
+<section id="experience" class="resume" data-aos="fade-up">
+  <div class="container">
+    <div class="section-heading">
+      <span class="bg-text">Qualification</span>
+      <h2 class="fg-text">Experience</h2>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="tab-nav-sticky" data-aos="fade-up" data-aos-delay="100">
+      <button class="tab-btn" [class.active]="activeTab === 'work'" (click)="activeTab = 'work'">
+        <i class="bi bi-briefcase"></i> Professional
+      </button>
+      <button class="tab-btn" [class.active]="activeTab === 'education'" (click)="activeTab = 'education'">
+        <i class="bi bi-mortarboard"></i> Education
+      </button>
+      <button class="tab-btn" [class.active]="activeTab === 'ai'" (click)="activeTab = 'ai'">
+        <i class="bi bi-robot"></i> AI & Innovation
+      </button>
+    </div>
+
+    <!-- Professional Tab -->
+    <div class="tab-content" *ngIf="activeTab === 'work'">
+      <div class="timeline">
+        <div class="timeline-item" *ngFor="let item of employment; let i = index"
+             [class.right]="i % 2 !== 0"
+             data-aos="fade-up" [attr.data-aos-delay]="150 + i * 100">
+          <div class="timeline-dot">
+            <i class="bi bi-building"></i>
+          </div>
+          <div class="timeline-card">
+            <div class="card-header-bar">
+              <span class="period-badge">{{ item.period }}</span>
+              <span class="org-name">{{ item.org }}</span>
+            </div>
+            <h4>{{ item.title }}</h4>
+            <!-- Projects -->
+            <div class="project-block" *ngFor="let proj of item.projects">
+              <h6 class="project-title"><i class="bi bi-folder2-open"></i> {{ proj.name }}</h6>
+              <ul>
+                <li *ngFor="let pt of proj.points">{{ pt }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education Tab -->
+    <div class="tab-content" *ngIf="activeTab === 'education'">
+      <div class="timeline">
+        <div class="timeline-item" *ngFor="let item of education; let i = index"
+             [class.right]="i % 2 !== 0"
+             data-aos="fade-up" [attr.data-aos-delay]="150 + i * 100">
+          <div class="timeline-dot">
+            <i class="bi bi-book"></i>
+          </div>
+          <div class="timeline-card">
+            <div class="card-header-bar">
+              <span class="period-badge">{{ item.period }}</span>
+            </div>
+            <h4>{{ item.title }}</h4>
+            <p class="org"><em>{{ item.org }}</em></p>
+            <p class="desc" *ngIf="item.description">{{ item.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Tab -->
+    <div class="tab-content" *ngIf="activeTab === 'ai'">
+      <div class="ai-cards">
+        <div class="ai-card" *ngFor="let item of aiInnovation; let i = index"
+             data-aos="zoom-in" [attr.data-aos-delay]="150 + i * 100">
+          <div class="ai-icon"><i class="bi" [ngClass]="item.icon"></i></div>
+          <h5>{{ item.title }}</h5>
+          <p>{{ item.text }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Achievements -->
+    <div class="achievements-bar" data-aos="fade-up" data-aos-delay="200">
+      <div class="achievement" *ngFor="let a of achievements">
+        <i class="bi" [ngClass]="a.icon"></i>
+        <span>{{ a.text }}</span>
+      </div>
+    </div>
+  </div>
+</section>

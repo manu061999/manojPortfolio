@@ -1,0 +1,38 @@
+<section id="hero" class="hero">
+  <img src="assets/hero-bg.jpg" alt="Hero background">
+  <div class="overlay"></div>
+
+  <!-- Floating particles -->
+  <div class="particles">
+    <span *ngFor="let p of particles" class="particle" [style.left]="p.left" [style.animation-duration]="p.duration" [style.animation-delay]="p.delay" [style.width]="p.size" [style.height]="p.size"></span>
+  </div>
+
+  <div class="container hero-content" data-aos="fade-up" data-aos-delay="100">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 text-center">
+        <p class="greeting" data-aos="fade-down" data-aos-delay="200">👋 Hello, I'm</p>
+        <h1 data-aos="zoom-in" data-aos-delay="300">Manoj Kumar <span class="highlight">Diddi</span></h1>
+        <p class="typed-line">
+          <span #typedElement class="typed-cursor-target"></span>
+        </p>
+        <div class="hero-tagline" data-aos="fade-up" data-aos-delay="500">
+          <span class="tag">SDET</span>
+          <span class="tag-dot">•</span>
+          <span class="tag">Quality Engineer</span>
+          <span class="tag-dot">•</span>
+          <span class="tag">Creative Soul</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator">
+    <a href="#about">
+      <div class="mouse">
+        <div class="wheel"></div>
+      </div>
+      <span>Scroll Down</span>
+    </a>
+  </div>
+</section>

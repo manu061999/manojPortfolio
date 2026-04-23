@@ -1,0 +1,71 @@
+<section id="about" class="about" data-aos="fade-up">
+  <div class="container">
+    <div class="section-heading">
+      <span class="bg-text">Me</span>
+      <h2 class="fg-text">About</h2>
+    </div>
+
+    <div class="row justify-content-between mt-4">
+      <!-- Photo -->
+      <div class="col-lg-4 left-sticky" data-aos="fade-right" data-aos-delay="100">
+        <div class="photo-carousel">
+          <div class="carousel-inner">
+            <div class="carousel-slide" *ngFor="let img of photos; let i = index"
+                 [class.active]="i === currentSlide">
+              <img [src]="img" alt="Photo of Manoj Kumar Diddi">
+            </div>
+          </div>
+          <div class="carousel-dots">
+            <span *ngFor="let img of photos; let i = index"
+                  class="dot" [class.active]="i === currentSlide"
+                  (click)="goToSlide(i)"></span>
+          </div>
+        </div>
+        <!-- Personal trait pills under photo -->
+        <div class="trait-cloud" data-aos="zoom-in" data-aos-delay="300">
+          <span class="trait" *ngFor="let trait of traits; let i = index"
+                [style.animation-delay]="i * 0.1 + 's'">
+            <i class="bi" [ngClass]="trait.icon"></i> {{ trait.label }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="col-lg-7" data-aos="fade-left" data-aos-delay="200">
+        <div class="about-content">
+          <p class="name-title">
+            <strong>Manoj Kumar Diddi</strong><br>
+            <span>SDET | Software Quality Engineer</span>
+          </p>
+          <p class="intro-text">
+            Based in Hyderabad, originally from Visakhapatnam 📍 By day, I hunt bugs for a living 🐛 — by night, I hunt the perfect biryani recipe 🍳 I'm a calm, low-key guy who treats career growth 📈, wardrobe updates 👔, and cooking experiments 🧑‍🍳 with equal seriousness. Quality engineer at work, quality human in progress ✨
+          </p>
+
+          <h5 class="about-subtitle" data-aos="fade-up" data-aos-delay="250">
+            <i class="bi bi-briefcase"></i> What I Do
+          </h5>
+          <div class="highlight-cards">
+            <div class="highlight-card" *ngFor="let item of professionalHighlights; let i = index"
+                 data-aos="fade-up" [attr.data-aos-delay]="300 + i * 80">
+              <div class="card-icon">
+                <i class="bi" [ngClass]="item.icon"></i>
+              </div>
+              <p>{{ item.text }}</p>
+            </div>
+          </div>
+
+          <h5 class="about-subtitle" data-aos="fade-up" data-aos-delay="250">
+            <i class="bi bi-heart"></i> Who I Am
+          </h5>
+          <div class="personal-grid">
+            <div class="personal-item" *ngFor="let item of personalHighlights; let i = index"
+                 data-aos="flip-up" [attr.data-aos-delay]="200 + i * 100">
+              <i class="bi" [ngClass]="item.icon"></i>
+              <span>{{ item.text }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
