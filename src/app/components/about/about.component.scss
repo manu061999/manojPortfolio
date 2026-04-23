@@ -133,22 +133,12 @@
     position: relative;
     top: auto;
     margin-bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
   .photo-carousel {
-    max-width: 200px;
-    padding: 6px;
+    max-width: 220px;
+    padding: 8px;
   }
-  .carousel-inner { height: 240px; }
-  .carousel-slide img { height: 240px; }
+  .carousel-inner { height: 260px; }
+  .carousel-slide img { height: 260px; }
   .personal-grid { grid-template-columns: 1fr; }
-  .intro-text { font-size: 0.85rem; }
-  .highlight-card { padding: 10px 12px; }
-  .highlight-card .card-icon { width: 34px; height: 34px; min-width: 34px; }
-  .name-title { text-align: center; }
-  .intro-text { text-align: center; border-left: none; padding-left: 0; border-top: 3px solid var(--primary); padding-top: 12px; }
-  .about-subtitle { justify-content: center; }
-  .trait-cloud { margin-top: 1rem; }
 }
