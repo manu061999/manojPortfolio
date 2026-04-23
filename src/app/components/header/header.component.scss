@@ -69,21 +69,31 @@
 /* Mobile Nav */
 @media (max-width: 1199px) {
   .navmenu {
-    i { font-size: 28px; cursor: pointer; color: #fff; margin-right: 10px; transition: 0.3s; }
-    ul {
-      display: none; list-style: none; position: absolute;
-      inset: 60px 20px 20px 20px; padding: 10px 0; margin: 0;
-      border-radius: 6px; background: #fff;
-      border: 1px solid rgba(68,68,68,0.1);
-      overflow-y: auto; z-index: 9998;
-      &.show { display: block; }
+    i {
+      font-size: 28px; cursor: pointer; color: #fff;
+      margin-right: 10px; transition: 0.3s;
+      position: relative; z-index: 9999;
     }
+    ul {
+      display: none; list-style: none; position: fixed;
+      top: 0; right: 0; bottom: 0; left: 0;
+      padding: 80px 20px 20px; margin: 0;
+      background: rgba(0,0,0,0.95);
+      overflow-y: auto; z-index: 9998;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      &.show { display: flex; }
+    }
+    li { margin: 8px 0; text-align: center; }
     a {
-      color: #444; padding: 10px 20px; font-family: var(--font-nav);
-      font-size: 17px; font-weight: 500; display: block; transition: 0.3s;
+      color: #fff; padding: 12px 30px; font-family: var(--font-nav);
+      font-size: 1.2rem; font-weight: 500; display: block; transition: 0.3s;
+      letter-spacing: 2px; text-transform: uppercase;
       &:hover { color: var(--primary); }
     }
   }
 
   .header.scrolled .navmenu i { color: #444; }
+  .navmenu ul.show ~ i { color: #fff !important; }
 }
